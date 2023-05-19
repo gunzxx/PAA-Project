@@ -1,0 +1,54 @@
+:root{
+    --c1 : #FED049;
+    --c2 : #CFFDE1;
+    --c3 : #3D5656;
+    --c4 : #41B167;
+    --c5 : #52A34C;
+    --c6 : #56A151;
+
+    --g1 : #CFFDE1;
+    --g2 : #56A151;
+    --g3 : #52A34C;
+    --g4 : #41B167;
+    --g5 : #3D5656;
+    --g6 : #1D673F;
+    --g7 : #1A5736;
+
+    --w1:#fff;
+    --w2:#fafafa;
+    --w3:#e8e8e8;
+    --w4:#d9d9d9;
+    --w5:#c2c2c2;
+
+    --b1:#000;
+    --b2:#1b1e23;
+    --b3:#9F9A9A;
+
+    --r1: #FF0000;
+    --r2: #F14949;;
+    --r3: #e76666;
+    --r4: #FFCDD2;
+    --r5: #FFB6C1;
+
+    --o1:#FF5000;
+    --o2:#FF9900;
+
+    --bl1:#0000FF;
+    --bl2:#00EBD7;
+
+    --sc1 : rgba(113, 73, 198,.7);
+    --sc2 : rgba(252, 41, 71,.7);
+    --sc3 : rgba(254, 98, 68,.7);
+    --sc4 : rgba(255, 222, 185,.7);
+}
+:fullscreen{
+    background-color: var(--g3);
+}
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: var(--b1);
+    box-sizing: border-box;
+}
