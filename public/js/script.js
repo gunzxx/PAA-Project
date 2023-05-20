@@ -29,6 +29,8 @@ $(document).ready(()=>{
     
     $(".logout").click(function (e) {
         e.preventDefault();
+        const token = getJWT();
+        console.log(token);
 
         Swal.fire({
             text: "Logout?",
@@ -43,7 +45,6 @@ $(document).ready(()=>{
         }).then((result)=>{
             if(result.isConfirmed){
                 $('.spinner-container').css('display','flex');
-                const token = getJWT();
 
                 $.ajax({
                     method: "POST",
