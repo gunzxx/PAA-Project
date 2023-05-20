@@ -1,14 +1,32 @@
 @extends('layout.main')
 
-@section('content')
-    <h1 class="text-xl text-[--g2] font-bold">
-        Login!
-    </h1>
-    <div class="container" class="w-[100vw] h-[100vh] bg-orange-500">
-        <form action="/login" method="POST">
+@section('head')
+    <link rel="stylesheet" href="/css/auth/form.css">
+@endsection
 
-        </form>
-    </div>
+@section('content')
+    <main>
+        <div class="card-container">
+            <div class="container d-flex justify-content-center text-white">
+                <h1>Login!</h1>
+            </div>
+
+            <form action="/admin/login" method="POST" class="form-container">
+                @csrf
+                <div class="form-group">
+                    <label for="email" class="form-label text-white">Email</label>
+                    <input name="email" type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label text-white">Password</label>
+                    <input name="password" type="password" class="form-control" id="password">
+                </div>
+                <div class="form-group">
+                    <button class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </main>
 @endsection
 
 @section('script')

@@ -1,0 +1,115 @@
+body{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/img/landing/bg1.jpg');
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.logo{
+    width: 200px;
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    z-index: 3;
+}
+
+.overlay-1{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 0)0%,#fff 100%);
+    z-index: 1;
+}
+.overlay-2{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 2;
+}
+
+.text-container{
+    position: absolute;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.text-container *{
+    color: var(--w1);
+}
+.title-container *{
+    font-size: 36px;
+    font-weight: bold;
+}
+.title-container .title{
+    width: min-content;
+}
+.title h1{
+    display: inline-block;
+    animation: typing 2.5s steps(20, end) alternate infinite;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid;
+}
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    75%,100% {
+        /* width: 360px; */
+        width: 100%;
+    }
+}
+.subtitle p{
+    margin: 0;
+}
+
+
+
+.button-container{
+    position: fixed;
+    right: 70px;
+    top: 70px;
+    z-index: 3;
+}
+
+
+.card-information{
+    position: absolute;
+    right: 70px;
+    z-index: 3;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+}
+.card-information *{
+    text-align: right;
+}
+
+
+.destination-container img{
+    z-index: 3;
+    position: fixed;
+    box-shadow: 0 0 15px rgba(0,0,0,.1);
+    border-radius: 5px;
+}
+.img1{
+    right: 320px;
+    bottom: 80px;
+}
+.img2{
+    right: 200px;
+    bottom: 140px;
+}
+.img3{
+    right: 70px;
+    bottom: 70px;
+}

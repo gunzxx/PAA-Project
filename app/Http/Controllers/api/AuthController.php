@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -23,5 +24,12 @@ class AuthController extends Controller
         }
 
         return response()->json(['message'=>"Login berhasil",'token'=>$token]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('api')->logout();
+
+        return response()->json(['message'=>"Logout berhasil"]);
     }
 }

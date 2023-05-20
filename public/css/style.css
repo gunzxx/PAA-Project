@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 :root{
     --c1 : #FED049;
     --c2 : #CFFDE1;
@@ -52,3 +54,48 @@
     color: var(--b1);
     box-sizing: border-box;
 }
+a{
+    text-decoration: none;
+}
+
+.logout{
+    cursor: pointer;
+}
+
+
+
+/* Button */
+.btn{
+    width: fit-content;
+    padding: 5px 20px;
+    border-radius: 5px;
+    outline: none;
+    background-color: var(--w1);
+    border: 1px solid var(--b2);
+    color: var(--b2);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.btn *{
+    color: inherit;
+}
+.btn:hover{
+    background-color: var(--b2);
+    color: var(--w1);
+}
+.btn:hover *{
+    color: var(--w1);
+}
+.btn-main{
+    border: 1px solid var(--g2);
+    background: var(--w1);
+    color: var(--g2);
+}
+.btn-main:hover{
+    background-color: var(--g2);
+    color: var(--w1);
+}
+.btn-main:hover *{
+    color: var(--w1);
+}
+/* Button end */

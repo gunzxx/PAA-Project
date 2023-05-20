@@ -1,0 +1,1 @@
+<input type="hidden" value="{{ session('jwt') }}" id="jwt-token">

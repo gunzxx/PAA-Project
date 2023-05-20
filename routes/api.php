@@ -22,3 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware("guest")->group(function(){
     Route::post('login',[AuthController::class,'index']);
 });
+
+Route::middleware("auth:api")->group(function(){
+    Route::get('tes',function(){
+        return response()->json(['message'=>"OKE"]);
+    });
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
