@@ -14,6 +14,20 @@ $(document).ready(()=>{
         return null;
     }
     
+    function getCookie(cookieName) {
+        var cookieString = document.cookie;
+        var cookies = cookieString.split(';');
+
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].split('=');
+            if (cookie[0] === cookieName) {
+                return cookie[1];
+            }
+        }
+        // jika tidak ditemukan
+        return null;
+    }
+    
     function deleteCookie(cookieName) {
         document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     }

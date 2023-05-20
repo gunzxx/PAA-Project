@@ -6,6 +6,10 @@ use App\Http\Controllers\fe\AuthController;
 Route::get('/', function () {
     return view('landing');
 });
+Route::get('/tes', function () {
+    dd(request()->getHost());
+    return view('landing');
+});
 
 
 Route::group(['middleware'=>['auth:web','role:admin'],'prefix'=>'admin'],function(){
