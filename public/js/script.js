@@ -1,6 +1,8 @@
 $(document).ready(()=>{
     function getAll() {
-        return document.cookie;
+        const cookieString =  document.cookie;
+        var cookies = cookieString.split(';');
+        console.log(cookies);
     }
 
     function getCookie(cookieName) {
@@ -34,7 +36,7 @@ $(document).ready(()=>{
         e.preventDefault();
         const token = getJWT();
         console.log(token);
-        console.log(getAll());
+        getAll();
 
         Swal.fire({
             text: "Logout?",
