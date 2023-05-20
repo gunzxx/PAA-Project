@@ -40,8 +40,6 @@ $(document).ready(()=>{
     $(".logout").click(function (e) {
         e.preventDefault();
         const token = getJWT();
-        // console.log(token);
-        // getAll();
 
         Swal.fire({
             text: "Logout?",

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Gunzxx',
             'email' => 'gunzxx@mail.com',
             'password' => bcrypt('123'),
+            'alamat' => "Jl Kalimantan 40",
         ]);
         $user->assignRole('admin');
 
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Gunz 3',
             'email' => 'gunz3@mail.com',
             'password' => bcrypt('123'),
+            'alamat' => "Jl Kalimantan 40",
         ]);
         $user->assignRole('visitor');
     }
