@@ -57,7 +57,7 @@ $(document).ready(()=>{
 
                 $.ajax({
                     method: "POST",
-                    url: '/api/logout',
+                    url: '/api/auth/logout',
                     dataType: 'json',
                     headers: {
                         Authorization: "Bearer " + token,
