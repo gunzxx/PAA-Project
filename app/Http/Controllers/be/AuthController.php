@@ -47,6 +47,7 @@ class AuthController extends Controller
                 'password' => bcrypt($request->password),
                 'address' => $request->address,
             ]);
+            $user->assignRole('visitor');
             
             return response()->json([
                 'message' => 'Register berhasil',

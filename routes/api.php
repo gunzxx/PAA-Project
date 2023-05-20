@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\be\AuthController;
+use App\Http\Controllers\be\TouristController;
 use App\Http\Controllers\be\CategoryController;
 
 
@@ -21,11 +22,19 @@ Route::group([
 
 // Route CRUD category
 Route::middleware(["auth:api",'role:admin'])->group(function(){
+    // Category
     Route::get('category',[CategoryController::class,'index']);
     Route::get('category/{id}',[CategoryController::class,'single']);
     Route::post('category',[CategoryController::class,'store']);
     Route::put('category',[CategoryController::class, 'update']);
     Route::delete('category',[CategoryController::class,'delete']);
+    
+    // Tourist
+    Route::get('tourist',[TouristController::class,'index']);
+    Route::get('tourist/{id}',[TouristController::class,'single']);
+    Route::post('tourist',[TouristController::class,'store']);
+    Route::put('tourist',[TouristController::class, 'update']);
+    Route::delete('tourist',[TouristController::class,'delete']);
 });
 
 // Route authenticate
