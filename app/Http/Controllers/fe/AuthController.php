@@ -30,8 +30,9 @@ class AuthController extends Controller
         }
 
         session(['jwt' => $token]);
+        // cookie()
 
-        return redirect('/admin/home')->with("success",'Login berhasil')->cookie('jwt',$token,60,"/",null,false,false);
+        return redirect('/admin/home')->with("success",'Login berhasil')->withCookie('jwt',$token,60,"/",null,false,false);
     }
 
     public function logout()

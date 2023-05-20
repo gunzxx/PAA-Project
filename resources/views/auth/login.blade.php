@@ -7,18 +7,16 @@
 @section('content')
     <main>
         <div class="card-container">
-            <div class="container d-flex justify-content-center text-white">
-                <h1>Login!</h1>
-            </div>
+            <h1>Login!</h1>
 
             <form action="/admin/login" method="POST" class="form-container">
                 @csrf
                 <div class="form-group">
-                    <label for="email" class="form-label text-white">Email</label>
+                    <label for="email" class="form-label">Email</label>
                     <input name="email" type="email" class="form-control" id="email">
                 </div>
                 <div class="form-group">
-                    <label for="password" class="form-label text-white">Password</label>
+                    <label for="password" class="form-label">Password</label>
                     <input name="password" type="password" class="form-control" id="password">
                 </div>
                 <div class="form-group">
