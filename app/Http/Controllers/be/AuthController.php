@@ -53,9 +53,12 @@ class AuthController extends Controller
                 'user' => $user,
             ]);
         }catch(QueryException $e){
+            $message = "Queri error";
+            if($e->errorInfo[1] == 1062){
+                $message = "Email duplikat";
+            }
             return response()->json([
-                'message' => 'Query error',
-                'error'=>$e->errorInfo,
+                'message' => $message,
             ],401);
         }
         // }catch(QueryException $e){}
