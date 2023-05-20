@@ -75,6 +75,7 @@ $(document).ready(()=>{
                         })
                     },
                     error: (e) => {
+                        window.location.href = '/admin/logout';
                         console.log(e);
                         Swal.fire({
                             text : e.responseJSON.message,
