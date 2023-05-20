@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\be;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -32,6 +34,33 @@ class AuthController extends Controller
         ]);
     }
 
+    public function register(Request $request)
+    {
+        if(!$request->post('name') || !$request->post('email') || !$request->post('password') || !$request->post('address')){
+            return response()->json(['message'=>"Data tidak valid!"],400);
+        }
+
+        try{
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'address' => $request->address,
+            ]);
+    
+            // $token = Auth::guard('api')->login($user);
+    
+            return response()->json([
+                'message' => 'Register berhasil',
+                'user' => $user,
+            ]);
+        }catch(QueryException $e){
+            return response()->json([
+                'message' => 'Email duplikat',
+            ],401);
+        }
+        // }catch(QueryException $e){}
+    }
 
     public function logout(Request $request)
     {

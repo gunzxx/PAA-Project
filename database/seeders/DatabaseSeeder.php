@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Gunz 3',
             'email' => 'gunz3@mail.com',
             'password' => bcrypt('123'),
-            'address' => "Jl Kalimantan 40",
+            'address' => "Jl Kalimantan 43",
         ]);
         $user->assignRole('visitor');
     }
