@@ -1,19 +1,8 @@
 $(document).ready(()=>{
-    // getCookie function
-    function getCookie(cookieName) {
-        var cookieString = document.cookie;
-        var cookies = cookieString.split(';');
-
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].split('=');
-            if (cookie[0] === cookieName) {
-                return cookie[1];
-            }
-        }
-        // jika tidak ditemukan
-        return null;
+    function getAll() {
+        return document.cookie;
     }
-    
+
     function getCookie(cookieName) {
         var cookieString = document.cookie;
         var cookies = cookieString.split(';');
@@ -45,6 +34,7 @@ $(document).ready(()=>{
         e.preventDefault();
         const token = getJWT();
         console.log(token);
+        console.log(getAll());
 
         Swal.fire({
             text: "Logout?",
