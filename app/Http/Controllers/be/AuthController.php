@@ -47,16 +47,15 @@ class AuthController extends Controller
                 'password' => bcrypt($request->password),
                 'address' => $request->address,
             ]);
-    
-            // $token = Auth::guard('api')->login($user);
-    
+            
             return response()->json([
                 'message' => 'Register berhasil',
                 'user' => $user,
             ]);
         }catch(QueryException $e){
             return response()->json([
-                'message' => 'Email duplikat',
+                'message' => 'Query error',
+                'error'=>$e->errorInfo,
             ],401);
         }
         // }catch(QueryException $e){}
