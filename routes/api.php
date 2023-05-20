@@ -18,6 +18,15 @@ Route::group([
     Route::post('register',[AuthController::class,'register']);
 });
 
+// Route CRUD category
+Route::group([
+        'middleware'=>["auth:api",'role:admin'],
+        'prefix'=>"category",
+    ],function(){
+    Route::post('login',[AuthController::class,'login']);
+    Route::post('register',[AuthController::class,'register']);
+});
+
 // Route authenticate
 Route::group([
         'middleware'=>"auth:api",
