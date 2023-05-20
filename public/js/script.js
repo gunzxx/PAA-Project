@@ -2,7 +2,12 @@ $(document).ready(()=>{
     function getAll() {
         const cookieString =  document.cookie;
         var cookies = cookieString.split(';');
-        console.log(cookies);
+
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].split('=');
+            console.log(cookie);
+        }
+        
     }
 
     function getCookie(cookieName) {
