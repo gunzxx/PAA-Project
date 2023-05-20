@@ -30,9 +30,9 @@ class AuthController extends Controller
         }
 
         session(['jwt' => $token]);
-        // cookie()
+        $domain = request()->getHost() != "127.0.0.1" ? 'gunzxx.my.id' : null;
 
-        return redirect('/admin/home')->with("success",'Login berhasil')->withCookie('jwt',$token,60,"/",'gunzxx.my.id',false,false);
+        return redirect('/admin/home')->with("success",'Login berhasil')->withCookie('jwt',$token,60,"/",$domain,false,false);
     }
 
     public function logout()
