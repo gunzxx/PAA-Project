@@ -29,7 +29,7 @@ class AuthController extends Controller
             return redirect('/admin/login')->with("error", 'Login gagal');
         }
 
-        if(auth()->guard("web")->user()->hasRole('visitor')){
+        if(!auth()->guard("web")->user()->hasRole('admin')){
             Auth::logout();
             if(Auth::guard("api")->check()){
                 Auth::guard('api')->logout();

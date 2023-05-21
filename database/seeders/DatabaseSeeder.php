@@ -31,5 +31,21 @@ class DatabaseSeeder extends Seeder
             'address' => "Jl Kalimantan 43",
         ]);
         $user->assignRole('visitor');
+
+        $user = \App\Models\User::create([
+            'name' => 'M Bayu Dwi Praptama',
+            'email' => 'bayu@mail.com',
+            'password' => bcrypt('123'),
+            'address' => "Jl Kalimantan 41",
+        ]);
+        $user->assignRole('admin');
+
+        $user = \App\Models\User::create([
+            'name' => 'Farhan Burhanuddin Syaifullah',
+            'email' => 'farhan@mail.com',
+            'password' => bcrypt('123'),
+            'address' => "Jl Kalimantan 41",
+        ]);
+        $user->assignRole('admin');
     }
 }
