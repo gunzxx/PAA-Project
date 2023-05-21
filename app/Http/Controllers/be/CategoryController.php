@@ -47,6 +47,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        if(!auth()->guard("api")->user()->hasRole('admin')){
+            return response()->json(['message'=>"Anda bukan admin"],403);
+        }
         if(!$request->post("name")){
             return response()->json(['message'=>"Data tidak valid"],400);
         }
@@ -64,6 +67,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request)
     {
+        if (!auth()->guard("api")->user()->hasRole('admin')) {
+            return response()->json(['message' => "Anda bukan admin"], 403);
+        }
         if(!$request->input("id") || !$request->input("name")){
             return response()->json(['message'=>"Data tidak valid"],400);
         }
@@ -82,6 +88,9 @@ class CategoryController extends Controller
      */
     public function delete(Request $request)
     {
+        if (!auth()->guard("api")->user()->hasRole('admin')) {
+            return response()->json(['message' => "Anda bukan admin"], 403);
+        }
         if(!$request->input("id")){
             return response()->json(['message'=>"Data tidak valid"],400);
         }

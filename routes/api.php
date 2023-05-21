@@ -12,16 +12,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Route guest
-Route::group([
-        'middleware'=>"guest:api",
-        'prefix'=>"visitor",
-    ],function(){
-    Route::post('login',[AuthController::class,'login']);
-    Route::post('register',[AuthController::class,'register']);
+Route::prefix('auth')->group(function(){
+    Route::group(['middleware' => "guest:api",], function () {
+        Route::post('login', [AuthController::class, 'login']);
+        Route::post('register', [AuthController::class, 'register']);
+    });
+    Route::group(['middleware' => "auth:api",], function () {
+        Route::post('/logout', [AuthController::class, 'logout']);
+    });
 });
 
 // Route CRUD category
-Route::middleware(["auth:api",'role:admin'])->group(function(){
+Route::middleware(["auth:api"])->group(function(){
     // Category
     Route::get('category',[CategoryController::class,'index']);
     Route::get('category/{id}',[CategoryController::class,'single']);
@@ -35,13 +37,4 @@ Route::middleware(["auth:api",'role:admin'])->group(function(){
     Route::post('tourist',[TouristController::class,'store']);
     Route::put('tourist',[TouristController::class, 'update']);
     Route::delete('tourist',[TouristController::class,'delete']);
-});
-
-// Route authenticate
-Route::group([
-        'middleware'=>"auth:api",
-        'prefix'=>"auth",
-    ],function(){
-
-    Route::post('/logout', [AuthController::class, 'logout']);
 });
