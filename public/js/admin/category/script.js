@@ -1,5 +1,8 @@
 $(document).ready(()=>{
-    const categoryTable = $("#data-table").DataTable();
+    const categoryTable = $("#data-table").DataTable({
+        pageLength:5,
+        lengthMenu: [[5, 25, 50, -1], [5, 25, 50, "All"]]
+    });
 
     $("#form-modal-add").submit(function(e){
         e.preventDefault();
@@ -34,7 +37,7 @@ $(document).ready(()=>{
                     </div>
                 `]).draw();
                 $("#modal-add").find("modal-card").css('position','-5000');
-                setTimeout(()=>{$("#modal-add").css('display','none')},300)
+                setTimeout(()=>{$("#modal-add").css('display','none')},300);
             },
             error:(e)=>{
                 Swal.fire({
