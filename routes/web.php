@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\fe\AuthController;
+use App\Http\Controllers\fe\HomeController;
+use App\Http\Controllers\fe\CategoryController;
 
 Route::get('/', function () {
     return view('landing');
@@ -13,11 +15,9 @@ Route::get('/tes', function () {
 
 
 Route::group(['middleware'=>['auth:web','role:admin'],'prefix'=>'admin'],function(){
-    Route::get('/home', function () {
-        return view('home.index');
-    });
+    Route::get('/home', [HomeController::class,'index']);
 
-    
+    Route::get('/category', [CategoryController::class,'index']);
 
     Route::get('/logout', [AuthController::class,'logout']);
     Route::post('/logout', [AuthController::class, 'logout']);

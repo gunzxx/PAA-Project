@@ -1,41 +1,41 @@
-$(document).ready(()=>{
-    function getAll() {
-        const cookieString =  document.cookie;
-        var cookies = cookieString.split(';');
+function getAll() {
+    const cookieString =  document.cookie;
+    var cookies = cookieString.split(';');
 
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].split('=');
-            console.log(cookie);
-        }
-        
-    }
-
-    function getCookie(cookieName) {
-        var cookieString = document.cookie;
-        var cookies = cookieString.split(';');
-
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].split('=');
-            if (cookie[0].trim() === cookieName) {
-                return cookie[1];
-            }
-        }
-        // jika tidak ditemukan
-        return null;
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].split('=');
+        console.log(cookie);
     }
     
-    function deleteCookie(cookieName) {
-        document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+function getCookie(cookieName) {
+    var cookieString = document.cookie;
+    var cookies = cookieString.split(';');
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].split('=');
+        if (cookie[0].trim() === cookieName) {
+            return cookie[1];
+        }
     }
+    // jika tidak ditemukan
+    return null;
+}
+
+function deleteCookie(cookieName) {
+    document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
 
 
-    // JWT
-    function getJWT() {
-        return getCookie("jwt");
-    }
-    function deleteJWT() {
-        return deleteCookie("jwt");
-    }
+// JWT
+function getJWT() {
+    return "Bearer " + getCookie("jwt");
+}
+function deleteJWT() {
+    return deleteCookie("jwt");
+}
+$(document).ready(()=>{
     
     $(".logout").click(function (e) {
         e.preventDefault();
@@ -46,8 +46,8 @@ $(document).ready(()=>{
             showCancelButton: true,
             cancelButtonText: 'No',
             confirmButtonText: 'Yes',
-            confirmButtonColor: 'var(--r2)',
-            cancelButtonColor: 'var(--b3)',
+            confirmButtonColor: 'var(--r1)',
+            cancelButtonColor: 'var(--b2)',
             customClass: {
                 popup:'swal-wide',
             },
@@ -60,7 +60,7 @@ $(document).ready(()=>{
                     url: '/api/auth/logout',
                     dataType: 'json',
                     headers: {
-                        Authorization: "Bearer " + token,
+                        Authorization: token,
                     },
                     success: (e) => {
                         deleteJWT();
@@ -68,7 +68,7 @@ $(document).ready(()=>{
                         Swal.fire({
                             text : e.message,
                             icon : 'success',
-                            confirmButtonColor: 'var(--g2)',
+                            confirmButtonColor: 'var(--b1)',
                             customClass: {
                                 popup:'swal-wide',
                             },

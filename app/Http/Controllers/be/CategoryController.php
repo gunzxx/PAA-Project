@@ -27,15 +27,18 @@ class CategoryController extends Controller
     public function single($id)
     {
         $category = Category::find($id);
-        if(!$category){
+        if (!$category){
             return response()->json([
                 'message'=>"Data tidak ditemukan",
             ],404);
         }
+        
+        $touristCount = $category->tourist->count();
 
         return response()->json([
             'message'=>"Berhasil",
             'data'=>$category,
+            "pariwisata" => $touristCount,
         ]);
     }
 
@@ -48,10 +51,11 @@ class CategoryController extends Controller
             return response()->json(['message'=>"Data tidak valid"],400);
         }
 
-        Category::create($request->only('name'));
+        $category = Category::create($request->only('name'));
         
         return response()->json([
             'message'=>"Data berhasil ditambah",
+            'category'=>$category,
         ]);
     }
 

@@ -22,11 +22,19 @@ class AuthController extends Controller
         ]);
 
         if (!$token = Auth::guard('api')->attempt($validate)) {
-            return redirect('/login')->with("error", 'Login gagal');
+            return redirect('/admin/login')->with("error", 'Login gagal');
         }
 
         if (!Auth::guard('web')->attempt($validate)) {
-            return redirect('/login')->with("error", 'Login gagal');
+            return redirect('/admin/login')->with("error", 'Login gagal');
+        }
+
+        if(auth()->guard("web")->user()->hasRole('visitor')){
+            Auth::logout();
+            if(Auth::guard("api")->check()){
+                Auth::guard('api')->logout();
+            }
+            return redirect('/admin/login')->with("error", 'Anda bukan admin!');
         }
 
         session(['jwt' => $token]);
@@ -38,7 +46,7 @@ class AuthController extends Controller
     public function logout()
     {
         if(!session("jwt")){
-            return response()->json('Data tidak valid');
+            // return response()->json('Data tidak valid');
         }
         session()->forget('jwt');
         

@@ -25,6 +25,14 @@
             </form>
         </div>
     </main>
+
+    @if (session()->has('error'))
+        <x-alertError :message="session()->get('error')"></x-alertError>
+    @endif
+
+    @if (session()->has('success'))
+        <x-alertSuccess :message="session()->get('success')"></x-alertSuccess>
+    @endif
 @endsection
 
 @section('script')
