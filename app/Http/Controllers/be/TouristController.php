@@ -14,11 +14,11 @@ class TouristController extends Controller
      */
     public function index()
     {
-        $tourist = Tourist::all();
+        $tourists = Tourist::with(['tourist'])->all();
 
         return response()->json([
             'message' => "Berhasil",
-            'data' => $tourist,
+            'data' => $tourists,
         ]);
     }
 
