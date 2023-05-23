@@ -14,10 +14,6 @@ class TouristController extends Controller
      */
     public function index()
     {
-        if (auth()->guard("api")->check() == false) {
-            return response()->json(['message' => "Not authenticate",], 401);
-        }
-        
         $tourist = Tourist::all();
 
         return response()->json([

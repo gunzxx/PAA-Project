@@ -14,6 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        if (auth()->guard("api")->check() == false) {
+            return response()->json(['message' => "Not authenticate",], 401);
+        }
+        
         $category = Category::all();
 
         return response()->json([
@@ -27,6 +31,10 @@ class CategoryController extends Controller
      */
     public function single($id)
     {
+        if (auth()->guard("api")->check() == false) {
+            return response()->json(['message' => "Not authenticate",], 401);
+        }
+        
         $category = Category::find($id);
         if (!$category){
             return response()->json([
