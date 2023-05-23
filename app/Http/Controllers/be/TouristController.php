@@ -14,7 +14,7 @@ class TouristController extends Controller
      */
     public function index()
     {
-        $tourists = Tourist::with(['tourist'])->all();
+        $tourists = Tourist::with(['tourist'])->get();
 
         return response()->json([
             'message' => "Berhasil",
