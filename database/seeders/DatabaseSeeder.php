@@ -44,11 +44,30 @@ class DatabaseSeeder extends Seeder
             'name' => 'Destinasi',
         ]);
 
+        \App\Models\Category::create([
+            'name' => 'Kuliner',
+        ]);
+
         \App\Models\Tourist::create([
             'name' => 'Batu jubang',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
             'location' => 'Jl. Soekarno Hatta',
             'category_id'=>1,
+        ]);
+
+        \App\Models\Tourist::create([
+            'name' => 'Masjid Raudhatul Mukhlisin',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
+            'location' => 'Jl. Soekarno Hatta',
+            'category_id'=>1,
+            'thumb' => 'https://1.bp.blogspot.com/-GFbRmK2ZdTA/XYHqL1XcgqI/AAAAAAAARA4/BddW0_aqfhIWS6qWcDp1tpqEh8tr12HSQCLcBGAsYHQ/s1600/masjid%2Bjember_002.JPG',
+        ]);
+
+        \App\Models\Tourist::create([
+            'name' => 'Mie Gacoan',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
+            'location' => 'Jl. Soekarno Hatta',
+            'category_id'=>2,
         ]);
     }
 }
