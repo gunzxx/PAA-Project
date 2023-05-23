@@ -25,14 +25,6 @@ class DatabaseSeeder extends Seeder
         $user->assignRole('admin');
 
         $user = \App\Models\User::create([
-            'name' => 'Gunz 3',
-            'email' => 'gunz3@mail.com',
-            'password' => bcrypt('123'),
-            'address' => "Jl Kalimantan 43",
-        ]);
-        $user->assignRole('visitor');
-
-        $user = \App\Models\User::create([
             'name' => 'M Bayu Dwi Praptama',
             'email' => 'bayu@mail.com',
             'password' => bcrypt('123'),
@@ -47,5 +39,16 @@ class DatabaseSeeder extends Seeder
             'address' => "Jl Kalimantan 41",
         ]);
         $user->assignRole('admin');
+
+        \App\Models\Category::create([
+            'name' => 'Destinasi',
+        ]);
+
+        \App\Models\Tourist::create([
+            'name' => 'Batu jubang',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
+            'location' => 'Jl. Soekarno Hatta',
+            'category_id'=>1,
+        ]);
     }
 }
