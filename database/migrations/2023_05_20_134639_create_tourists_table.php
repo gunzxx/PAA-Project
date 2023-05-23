@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description');
             $table->string('location');
-            $table->string('thumb')->default('/img/tourist/default.png');
+            $table->string('thumb')->default(url('/')+'/img/tourist/default.png');
             $table->foreignId('category_id')->references('id')->on("categories")->onDelete('cascade');
             $table->timestamps();
         });
