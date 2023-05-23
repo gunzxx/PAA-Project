@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="/css/main.css">
     <script src="/js/jquery.min.js"></script>
     <script src="/js/npm/swal2.js"></script>
-    <link href="/DataTables/datatables.min.css" rel="stylesheet"/>
-    <script src="/DataTables/datatables.min.js"></script>
     @yield('head')
 
 </head>

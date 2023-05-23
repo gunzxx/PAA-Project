@@ -1,6 +1,8 @@
 @extends('layout.main')
 
 @section('head')
+    <link href="/DataTables/datatables.min.css" rel="stylesheet"/>
+    <script src="/DataTables/datatables.min.js"></script>
     <link rel="stylesheet" href="/css/admin/style.css">
 @endsection
 

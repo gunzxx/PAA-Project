@@ -5,6 +5,7 @@ namespace App\Http\Controllers\be;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -30,6 +31,8 @@ class CategoryController extends Controller
         if (!$category){
             return response()->json([
                 'message'=>"Data tidak ditemukan",
+                'data'=>[],
+                'pariwisata'=>0,
             ],404);
         }
         
@@ -47,11 +50,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        if (auth()->guard("api")->check() == false) {
+            return response()->json(['message' => "Not authenticate",], 401);
+        }
+        
         if(!auth()->guard("api")->user()->hasRole('admin')){
             return response()->json(['message'=>"Anda bukan admin"],403);
         }
-        if(!$request->post("name")){
-            return response()->json(['message'=>"Data tidak valid"],400);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['message' => "Data tidak valid"], 400);
         }
 
         $category = Category::create($request->only('name'));
@@ -67,11 +78,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request)
     {
+        if (auth()->guard("api")->check() == false) {
+            return response()->json(['message' => "Not authenticate",], 401);
+        }
+        
         if (!auth()->guard("api")->user()->hasRole('admin')) {
             return response()->json(['message' => "Anda bukan admin"], 403);
         }
-        if(!$request->input("id") || !$request->input("name")){
-            return response()->json(['message'=>"Data tidak valid"],400);
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+            'name' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['message' => "Data tidak valid"], 400);
         }
 
         $id = $request->input("id");
@@ -88,11 +108,19 @@ class CategoryController extends Controller
      */
     public function delete(Request $request)
     {
+        if (auth()->guard("api")->check() == false) {
+            return response()->json(['message' => "Not authenticate",], 401);
+        }
+        
         if (!auth()->guard("api")->user()->hasRole('admin')) {
             return response()->json(['message' => "Anda bukan admin"], 403);
         }
-        if(!$request->input("id")){
-            return response()->json(['message'=>"Data tidak valid"],400);
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['message' => "Data tidak valid"], 400);
         }
 
         $id = $request->input("id");
