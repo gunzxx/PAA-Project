@@ -12,9 +12,15 @@ class TouristController extends Controller
     /**
      * Method untuk mengambil semua data pariwisata
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tourists = Tourist::with(['category','media'])->get();
+        if($request->get("q")){
+            $keyword = $request->get("q");
+            $tourists = Tourist::where('name','like',"%".$keyword."%")->with(['category','media'])->get();
+        }
+        else{
+            $tourists = Tourist::with(['category','media'])->get();
+        }
 
         return response()->json([
             'message' => "Berhasil",
