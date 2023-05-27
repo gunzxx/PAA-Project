@@ -90,5 +90,21 @@ class DatabaseSeeder extends Seeder
             'location' => 'Jl. Soekarno Hatta',
             'category_id'=>2,
         ]);
+
+        \App\Models\Tourist::create([
+            'name' => 'Mumbul Garden',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
+            'location' => 'Jl. Soekarno Hatta',
+            'category_id' => 1,
+            'thumb' => 'https://1.bp.blogspot.com/-GFbRmK2ZdTA/XYHqL1XcgqI/AAAAAAAARA4/BddW0_aqfhIWS6qWcDp1tpqEh8tr12HSQCLcBGAsYHQ/s1600/masjid%2Bjember_002.JPG',
+        ]);
+
+        \App\Models\Tourist::create([
+            'name' => 'Jember Sport Garden',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
+            'location' => 'Jl. Soekarno Hatta',
+            'category_id' => 1,
+            'thumb' => 'https://1.bp.blogspot.com/-GFbRmK2ZdTA/XYHqL1XcgqI/AAAAAAAARA4/BddW0_aqfhIWS6qWcDp1tpqEh8tr12HSQCLcBGAsYHQ/s1600/masjid%2Bjember_002.JPG',
+        ]);
     }
 }
