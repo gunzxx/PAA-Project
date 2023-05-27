@@ -69,5 +69,26 @@ class DatabaseSeeder extends Seeder
             'location' => 'Jl. Soekarno Hatta',
             'category_id'=>2,
         ]);
+
+        \App\Models\Tourist::create([
+            'name' => 'Bu Sri',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
+            'location' => 'Jl. Soekarno Hatta',
+            'category_id'=>2,
+        ]);
+
+        \App\Models\Tourist::create([
+            'name' => 'Kantin barokah',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
+            'location' => 'Jl. Soekarno Hatta',
+            'category_id'=>2,
+        ]);
+
+        \App\Models\Tourist::create([
+            'name' => 'Pa Edi',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
+            'location' => 'Jl. Soekarno Hatta',
+            'category_id'=>2,
+        ]);
     }
 }
