@@ -1,6 +1,13 @@
+td.no{
+    max-width: 5%;
+}
 td:has(.action-container){
     width: 10%;
+}
+.action-container{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    background: red;
 }

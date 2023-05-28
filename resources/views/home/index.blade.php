@@ -16,7 +16,7 @@
 
             <div class="card-profile">
                 <div class="img-profile">
-                    <img src="{{ $user->getFirstMediaUrl('profile') != "" ? $user->getFirstMediaUrl('profile') : '/img/profile/default.png' }}" alt="Image Profile">
+                    <img style="max-height: 100px;max-width: 100px;" src="{{ $user->getFirstMediaUrl('profile') != "" ? $user->getFirstMediaUrl('profile') : '/img/profile/default.png' }}" alt="Image Profile">
                 </div>
                 <div class="detail-profile">
                     <h1>Nama : {{ $user->name }}</h1>

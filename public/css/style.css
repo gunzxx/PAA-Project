@@ -85,3 +85,16 @@ body{
     color: var(--w1);
 }
 /* Button end */
+
+
+/* Table configure */
+/* table{
+    table-layout: fixed;
+} */
+td{
+    word-wrap: break-word;
+}
+.even{
+    background: var(--w1);
+}
+/* Table configure end */

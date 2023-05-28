@@ -21,24 +21,26 @@
                 <table>
                     <thead>
                         <tr>
-                            <td>No</td>
+                            <td class="nomer">No</td>
                             <td>Nama</td>
                             <td>Kategori</td>
                             <td>Lokasi</td>
                             <td>Latitude</td>
                             <td>Longitude</td>
+                            <td>Thumbnail</td>
                             <td>Aksi</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($tourists as $key => $tourist)
-                            <tr>
+                            <tr class="@if($key%2==0) even @endif">
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $tourist->name }}</td>
                                 <td>{{ $tourist->category->name }}</td>
                                 <td>{{ $tourist->location }}</td>
                                 <td>{{ $tourist->latitude }}</td>
                                 <td>{{ $tourist->longitude }}</td>
+                                <td><a href="{{ $tourist->getFirstMediaUrl("thumb") != "" ? $tourist->getFirstMediaUrl("thumb") : "/img/tourist/default.png" }}" target="_blank">Link gambar</a></td>
                                 <td>
                                     <div class="action-container">
                                         <a class="btn" href="/admin/tourist/edit/{{ $tourist->id }}"><i class="bi bi-pencil-square"></i></a>
