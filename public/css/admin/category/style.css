@@ -1,0 +1,7 @@
+.table-container{
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: stretch !important;
+    align-items: stretch !important;
+}

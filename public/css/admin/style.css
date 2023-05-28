@@ -121,6 +121,10 @@ main{
     box-shadow: var(--bsl);
     padding: 10px;
     margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
 }
 table{
     width: 100%;
@@ -170,3 +174,20 @@ td.no{
     transition: 0.3s;
 }
 /* Modal end */
+
+
+/* Form */
+.table-container{
+    margin-bottom: 30px;
+    padding-bottom: 100px;
+}
+.profie-img-label{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#preview-img{
+    max-height: 150px;
+}
+/* Form end */

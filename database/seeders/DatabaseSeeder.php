@@ -52,6 +52,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Batu jubang',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
             'location' => 'Jl. Soekarno Hatta',
+            'latitude'=>-8.263723377917053,
+            'longitude'=> 113.75732835223602,
             'category_id'=>1,
         ]);
 
@@ -59,14 +61,18 @@ class DatabaseSeeder extends Seeder
             'name' => 'Masjid Raudhatul Mukhlisin',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
             'location' => 'Jl. Soekarno Hatta',
-            'category_id'=>1,
+            'latitude' => -8.177814859130345,
+            'longitude' => 113.68124541270615,
             'thumb' => 'https://1.bp.blogspot.com/-GFbRmK2ZdTA/XYHqL1XcgqI/AAAAAAAARA4/BddW0_aqfhIWS6qWcDp1tpqEh8tr12HSQCLcBGAsYHQ/s1600/masjid%2Bjember_002.JPG',
+            'category_id'=>1,
         ]);
 
         \App\Models\Tourist::create([
             'name' => 'Mie Gacoan',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
             'location' => 'Jl. Soekarno Hatta',
+            'latitude' => -8.173234715278545,
+            'longitude' => 113.7077290233991,
             'category_id'=>2,
         ]);
 
@@ -74,6 +80,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Bu Sri',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
             'location' => 'Jl. Soekarno Hatta',
+            'latitude' => -8.173234715278545,
+            'longitude' => 113.7077290233991,
             'category_id'=>2,
         ]);
 
@@ -81,6 +89,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Kantin barokah',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
             'location' => 'Jl. Soekarno Hatta',
+            'latitude' => -8.173234715278545,
+            'longitude' => 113.7077290233991,
             'category_id'=>2,
         ]);
 
@@ -88,6 +98,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Pa Edi',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
             'location' => 'Jl. Soekarno Hatta',
+            'latitude' => -8.173234715278545,
+            'longitude' => 113.7077290233991,
             'category_id'=>2,
         ]);
 
@@ -95,6 +107,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Mumbul Garden',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
             'location' => 'Jl. Soekarno Hatta',
+            'latitude' => -8.173234715278545,
+            'longitude' => 113.7077290233991,
             'category_id' => 1,
         ]);
 
@@ -102,6 +116,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Jember Sport Garden',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nobis, labore quis esse asperiores placeat corrupti at soluta ab rerum!',
             'location' => 'Jl. Soekarno Hatta',
+            'latitude' => -8.173234715278545,
+            'longitude' => 113.7077290233991,
             'category_id' => 1,
         ]);
     }

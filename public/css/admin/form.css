@@ -1,0 +1,9 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-top: 30px;
+}
+.card-container{
+    width: 80%;
+}

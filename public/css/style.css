@@ -37,6 +37,9 @@ a{
 .logout{
     cursor: pointer;
 }
+body{
+    background-color: var(--w1);
+}
 
 
 

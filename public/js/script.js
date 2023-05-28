@@ -30,7 +30,7 @@ function deleteCookie(cookieName) {
 
 // JWT
 function getJWT() {
-    return "Bearer " + getCookie("jwt");
+    return "Bearer " + getCookie("jwt").trim();
 }
 function deleteJWT() {
     return deleteCookie("jwt");

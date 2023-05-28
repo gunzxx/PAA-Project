@@ -4,6 +4,7 @@
     <link href="/DataTables/datatables.min.css" rel="stylesheet"/>
     <script src="/DataTables/datatables.min.js"></script>
     <link rel="stylesheet" href="/css/admin/style.css">
+    <link rel="stylesheet" href="/css/admin/category/style.css">
 @endsection
 
 @section('content')
