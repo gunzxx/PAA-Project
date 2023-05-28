@@ -1,12 +1,14 @@
+$('.spinner-container').css('display','flex');
 $(document).ready(()=>{
     var latitude,longitude;
 
     if (navigator.geolocation) {
+        $('.spinner-container').css('display','none');
         navigator.geolocation.getCurrentPosition(getLocation);
     } else {
         window.location.href = '/admin/tourist';
         Swal.fire({
-            text : e.responseJSON.message,
+            text : "GPS tidak diizinkan",
             confirmButtonColor: 'var(--r2)',
             customClass: {
                 popup:'swal-wide',
