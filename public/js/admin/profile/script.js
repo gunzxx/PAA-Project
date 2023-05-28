@@ -1,4 +1,3 @@
-$('.spinner-container').css('display','flex');
 $(document).ready(()=>{
     var latitude,longitude;
 

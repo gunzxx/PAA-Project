@@ -85,5 +85,8 @@
 @endsection
 
 @section('script')
+    <script>
+    $('.spinner-container').css('display','flex');
+    </script>
     <script src="/js/admin/profile/script.js"></script>
 @endsection
