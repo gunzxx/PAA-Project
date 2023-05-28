@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         Role::create(['name'=>"visitor"]);
 
         $user = \App\Models\User::create([
-            'name' => 'Gunzxx',
+            'name' => 'Guntur Wahyudi',
             'email' => 'gunzxx@mail.com',
             'password' => bcrypt('123'),
             'address' => "Jl Kalimantan 40",
@@ -35,6 +35,14 @@ class DatabaseSeeder extends Seeder
         $user = \App\Models\User::create([
             'name' => 'Farhan Burhanuddin Syaifullah',
             'email' => 'farhan@mail.com',
+            'password' => bcrypt('123'),
+            'address' => "Jl Kalimantan 41",
+        ]);
+        $user->assignRole('admin');
+
+        $user = \App\Models\User::create([
+            'name' => 'Stefany Felisia Irawan',
+            'email' => 'stefany@mail.com',
             'password' => bcrypt('123'),
             'address' => "Jl Kalimantan 41",
         ]);
