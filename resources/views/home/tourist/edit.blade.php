@@ -78,7 +78,7 @@
                     <h1>Preview pariwisata : </h1>
                     <div class="current-media-container">
                         @if ($tourist->getMedia('preview')->count() > 0)
-                            <p>Gambar sebelumnya :</p>
+                            {{-- <p>Gambar sebelumnya :</p> --}}
                             <div class="current-media">
                                 @foreach ($tourist->getMedia('preview') as $media)
                                     {{ $media }}
@@ -86,11 +86,11 @@
                             </div>
                         @endif
                     </div>
-                    <label title="Klik untuk mengganti gambar" for="tourist_preview" style="cursor: pointer;" id="preview-tourist-container">
+                    <label title="Klik untuk menambah gambar" for="tourist_preview" style="cursor: pointer;" id="preview-tourist-container">
                         <img src="/img/tourist/add.png" alt="preview pariwisata">
                     </label>
                     <p>Max : 2MB</p>
-                    <input required multiple class="form-control" style="display: none;" type="file" name="tourist_preview[]" id="tourist_preview" accept="image/*">
+                    <input multiple class="form-control" style="display: none;" type="file" name="tourist_preview[]" id="tourist_preview" accept="image/*">
                     @error('tourist_preview')
                         <small class="error">{{ $message }}</small>
                     @enderror

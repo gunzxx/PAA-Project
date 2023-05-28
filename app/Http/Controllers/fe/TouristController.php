@@ -35,9 +35,30 @@ class TouristController extends Controller
             'location' => 'required',
             'latitude' => 'required|decimal:0,20',
             'longitude' => 'required|decimal:0,20',
+            'tourist_preview' => 'required',
         ]);
 
         $tourist = Tourist::create($validate);
+
+        $request_preview_url_arr = [];
+
+        $tourist->getMedia('preview')->each->delete();
+
+        foreach ($request->file('tourist_preview') as $file) {
+            $tourist->addMedia($file)->toMediaCollection("preview");
+        }
+
+        $tourist = Tourist::find($tourist->id);
+
+        foreach ($tourist->getMedia('preview') as $preview) :
+            $request_preview_url_arr[] = $preview->getUrl();
+        endforeach;
+
+        $tourist->update([
+            'preview_url' => json_encode($request_preview_url_arr),
+        ]);
+
+        dd($request_preview_url_arr);
 
         if ($request->file('thumb')) {
             $request->validate([
@@ -55,6 +76,9 @@ class TouristController extends Controller
     public function edit($id)
     {
         $tourist = Tourist::find($id);
+        if(!$tourist){
+            return abort(403);
+        }
         $categories = Category::all();
 
         return view('home.tourist.edit',[
@@ -73,7 +97,6 @@ class TouristController extends Controller
             'location'=>'required',
             'latitude'=>'required|decimal:0,20',
             'longitude'=>'required|decimal:0,20',
-            'tourist_preview'=>'required',
         ]);
 
         $request->validate([
@@ -81,6 +104,9 @@ class TouristController extends Controller
         ]);
 
         $tourist = Tourist::find($request->post('id'));
+        if (!$tourist) {
+            return abort(403);
+        }
         $tourist->update($validate);
 
         if($request->file('thumb')){
@@ -98,13 +124,25 @@ class TouristController extends Controller
                 'tourist_preview.*' => 'mimetypes:image/*|max:2096',
             ]);
 
-            $tourist->getMedia('preview')->each->delete();
+            $request_preview_url_arr = [];
+            // $tourist->getMedia('preview')->each->delete();
 
             foreach($request->file('tourist_preview') as $file){
                 $tourist->addMedia($file)->toMediaCollection("preview");
             }
+
+            $tourist = Tourist::find($tourist->id);
+
+            foreach ($tourist->getMedia('preview') as $preview) :
+                $request_preview_url_arr[] = $preview->getUrl();
+            endforeach;
+            
+            
+            $tourist->update([
+                'preview_url'=>json_encode($request_preview_url_arr),
+            ]);
         }
 
-        return redirect("/admin/tourist")->with('success',"Data berhasil diedit!");
+        return redirect("/admin/tourist")->with('success',"Data berhasil diperbarui!");
     }
 }

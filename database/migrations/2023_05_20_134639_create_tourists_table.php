@@ -19,7 +19,7 @@ return new class extends Migration
             $table->double('latitude',10);
             $table->double('longitude',10);
             $table->string('thumb')->default(url('/').'/img/tourist/default.png');
-            $table->json('preview_url');
+            $table->json('preview_url')->nullable();
             $table->foreignId('category_id')->references('id')->on("categories")->onDelete('cascade');
             $table->timestamps();
         });
