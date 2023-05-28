@@ -99,7 +99,7 @@ class CategoryController extends Controller
         Category::find($id)->update($data);
         
         return response()->json([
-            'message'=>"Data berhasil diubah",
+            'message'=>"Data berhasil diperbarui",
         ]);
     }
 

@@ -69,13 +69,15 @@ class TouristController extends Controller
             'description' => 'required',
             'location' => 'required',
             'category_id' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['message' => "Data tidak valid"], 400);
         }
 
-        $tourist = Tourist::create($request->only('name','description','location','location_id'));
+        $tourist = Tourist::create($request->only('name','description','location','latitude','longitude','category_id'));
 
         return response()->json([
             'message' => "Data berhasil ditambah",
@@ -120,7 +122,8 @@ class TouristController extends Controller
         $tourist->update($request->only('name', 'description', 'location', 'location_id'));
 
         return response()->json([
-            'message' => "Data berhasil diubah",
+            'message' => "Data berhasil diperbarui",
+            'data'=>$tourist,
         ]);
     }
 

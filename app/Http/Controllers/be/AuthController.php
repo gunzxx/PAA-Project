@@ -54,6 +54,8 @@ class AuthController extends Controller
                 'email' => 'required|email',
                 'password' => 'required',
                 'address' => 'required',
+                'latitude' => 'required',
+                'longitude' => 'required',
             ]);
 
             if ($validator->fails()) {
@@ -65,13 +67,15 @@ class AuthController extends Controller
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
                 'address' => $request->address,
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude,
             ]);
             $user->assignRole('visitor');
             
             return response()->json([
                 'message' => 'Register berhasil',
                 'user' => $user,
-            ]);
+            ],201);
         }catch(QueryException $e){
             $message = "Queri error";
             if($e->errorInfo[1] == 1062){
