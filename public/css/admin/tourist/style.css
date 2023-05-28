@@ -1,0 +1,6 @@
+td:has(.action-container){
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
