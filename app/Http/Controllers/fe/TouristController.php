@@ -58,7 +58,7 @@ class TouristController extends Controller
             'preview_url' => json_encode($request_preview_url_arr),
         ]);
 
-        dd($request_preview_url_arr);
+        // dd($request_preview_url_arr);
 
         if ($request->file('thumb')) {
             $request->validate([
