@@ -40,7 +40,7 @@
                                 <td>{{ $tourist->location }}</td>
                                 <td>{{ $tourist->latitude }}</td>
                                 <td>{{ $tourist->longitude }}</td>
-                                <td><a style="color: #2200cc;" href="{{ $tourist->getFirstMediaUrl("thumb") != "" ? $tourist->getFirstMediaUrl("thumb") : "/img/tourist/default.png" }}" target="_blank">Lihat<i style="color: #2200cc;" class="bi bi-box-arrow-up-right"></i></a></td>
+                                <td><a style="color: #2200cc;" href="{{ $tourist->getFirstMediaUrl("thumb") != "" ? $tourist->getFirstMediaUrl("thumb") : "/img/tourist/default.png" }}" target="_blank">Lihat <i style="color: #2200cc;" class="bi bi-box-arrow-up-right"></i></a></td>
                                 <td>
                                     <div class="action-container">
                                         <a class="btn" href="/admin/tourist/edit/{{ $tourist->id }}"><i class="bi bi-pencil-square"></i></a>
