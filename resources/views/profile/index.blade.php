@@ -15,12 +15,15 @@
             </div>
 
             <div class="table-container">
-                <form action="/admin/profile/edit" method="POST" id="profil-form" class="form-container">
+                <form action="/admin/profile/edit" method="POST" id="profil-form" class="form-container" enctype="multipart/form-data">
                     @csrf
                     <h1>Edit profil</h1>
                     <label for="profile-img" class="profie-img-label">
-                        <img id="preview-img" src="{{ auth()->user()->getFirstMediaUrl() != "" ? auth()->user()->getFirstMediaUrl() : "/img/profile/default.png" }}" alt="profile-image">
+                        <img id="preview-img" src="{{ auth()->user()->getFirstMediaUrl("profile") != "" ? auth()->user()->getFirstMediaUrl("profile") : "/img/profile/default.png" }}" alt="profile-image">
                         <input type="file" accept="image/*" style="display: none;" name="profile-img" id="profile-img">
+                        @error('profile-img')
+                            <small class="error">{{ $message }}</small>
+                        @enderror
                     </label>
                     <div class="form-group">
                         <label for="name">Nama</label>

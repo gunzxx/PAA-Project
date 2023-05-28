@@ -23,6 +23,7 @@
                     <p>Email : {{ $user->email }}</p>
                     <p>Alamat : {{ $user->address }}</p>
                 </div>
+                <a title="Edit Profile" href="/admin/profile"><i style="font-size: 32px;"  class="bi bi-pencil-square"></i></a>
             </div>
         </div>
     </main>

@@ -190,4 +190,9 @@ td.no{
 #preview-img{
     max-height: 150px;
 }
+.profie-img-label{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 /* Form end */

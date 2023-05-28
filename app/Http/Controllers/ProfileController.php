@@ -24,7 +24,15 @@ class ProfileController extends Controller
             'longitude'=>'required',
         ]);
 
-        User::find(auth()->user()->id)->update($validate);
+        $user = User::find(auth()->user()->id);
+        $user->update($validate);
+
+        if($request->file('profile-img')){
+            $request->validate([
+                'profile-img'=>"max:2096",
+            ]);
+            $user->addMediaFromRequest("profile-img")->toMediaCollection("profile");
+        }
 
         return redirect('/admin/profile')->with('success',"Profil berhasil diperbarui!");
     }
