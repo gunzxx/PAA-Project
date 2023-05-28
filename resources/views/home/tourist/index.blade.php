@@ -2,6 +2,7 @@
 
 @section('head')
     <link rel="stylesheet" href="/css/admin/style.css">
+    <link rel="stylesheet" href="/css/admin/tourist/style.css">
 @endsection
 
 @section('content')
