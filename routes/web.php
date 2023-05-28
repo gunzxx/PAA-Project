@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\fe\AuthController;
 use App\Http\Controllers\fe\HomeController;
@@ -45,3 +47,16 @@ Route::group(['middleware'=>'guest:web','prefix'=>'admin'],function(){
     Route::post('login', [AuthController::class,'postLogin']);
 });
 
+Route::get('/tes',function(){
+    return view('tes');
+});
+Route::post('/tes',function(Request $request){
+    $user = User::find(1);
+    $tes = [];
+    foreach($request->file("tes") as $key => $file){
+        $tes[] = $file;
+        $user->addMedia($file)->toMediaCollection("tes");
+    }
+    dd("ok");
+    return back();
+});

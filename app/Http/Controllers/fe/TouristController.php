@@ -73,6 +73,7 @@ class TouristController extends Controller
             'location'=>'required',
             'latitude'=>'required|decimal:0,20',
             'longitude'=>'required|decimal:0,20',
+            'tourist_preview'=>'required',
         ]);
 
         $request->validate([
@@ -90,6 +91,18 @@ class TouristController extends Controller
             $tourist->update([
                 'thumb'=> $tourist->getFirstMediaUrl("thumb"),
             ]);
+        }
+
+        if($request->file('tourist_preview')){
+            $request->validate([
+                'tourist_preview.*' => 'mimetypes:image/*|max:2096',
+            ]);
+
+            $tourist->getMedia('preview')->each->delete();
+
+            foreach($request->file('tourist_preview') as $file){
+                $tourist->addMedia($file)->toMediaCollection("preview");
+            }
         }
 
         return redirect("/admin/tourist")->with('success',"Data berhasil diedit!");

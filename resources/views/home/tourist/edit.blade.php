@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="/npm/select2/css/select2.css">
     <script src="/npm/select2/js/select2.full.js"></script>
     <link rel="stylesheet" href="/css/admin/style.css">
+    <link rel="stylesheet" href="/css/admin/tourist/style.css">
     <link rel="stylesheet" href="/css/admin/form.css">
 @endsection
 
@@ -40,6 +41,19 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <p>Thumbnail</p>
+                    <div id="preview-container">
+                        <div id="preview-img-container">
+                            <img src="{{ $tourist->getFirstMediaUrl('thumb') != "" ? $tourist->getFirstMediaUrl('thumb') : '/img/tourist/default.png' }}" alt="thumb img" id="preview-img">
+                        </div>
+                        <label class="btn" for="thumb">Unggah (Max : 2MB)</label>
+                        <input class="form-control" style="display: none;" type="file" name="thumb" id="thumb" accept="image/*">
+                    </div>
+                    @error('thumb')
+                        <small class="error">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <label for="location">Lokasi</label>
                     <input class="form-control" type="text" name="location" id="location" value="{{ $tourist->location }}" required>
                     @error('location')
@@ -61,10 +75,23 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="thumb">gambar</label>
-                    <input class="form-control" type="file" name="thumb" id="thumb" accept="image/*">
-                    <small>Max : 2MB</small>
-                    @error('thumb')
+                    <h1>Preview pariwisata : </h1>
+                    <div class="current-media-container">
+                        @if ($tourist->getMedia('preview')->count() > 0)
+                            <p>Gambar sebelumnya :</p>
+                            <div class="current-media">
+                                @foreach ($tourist->getMedia('preview') as $media)
+                                    {{ $media }}
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+                    <label title="Klik untuk mengganti gambar" for="tourist_preview" style="cursor: pointer;" id="preview-tourist-container">
+                        <img src="/img/tourist/add.png" alt="preview pariwisata">
+                    </label>
+                    <p>Max : 2MB</p>
+                    <input required multiple class="form-control" style="display: none;" type="file" name="tourist_preview[]" id="tourist_preview" accept="image/*">
+                    @error('tourist_preview')
                         <small class="error">{{ $message }}</small>
                     @enderror
                 </div>
