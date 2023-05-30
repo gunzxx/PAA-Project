@@ -62,7 +62,7 @@ Route::post('/tes',function(Request $request){
     return back();
 });
 
-Route::post("/backup",function(){
+Route::get("/backup",function(){
     $tourists = Tourist::all();
     $tourists->each(function($tourist){
         $thumb = "https://paa.gunzxx.my.id/img/tourist/default.png";
