@@ -47,7 +47,7 @@ class AuthController extends Controller
         if (auth()->guard("api")->check() == true) {
             return response()->json(['message' => "You are authenticate",], 400);
         }
-        
+
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
@@ -85,7 +85,7 @@ class AuthController extends Controller
                 'message' => $message,
             ],400);
         }
-        // }catch(QueryException $e){}
+        // catch(QueryException $e){}
     }
 
     public function logout(Request $request)

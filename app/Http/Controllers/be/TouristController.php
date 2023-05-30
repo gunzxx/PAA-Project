@@ -33,9 +33,9 @@ class TouristController extends Controller
      */
     public function single($id)
     {
-        if (auth()->guard("api")->check() == false) {
-            return response()->json(['message' => "Not authenticate",], 401);
-        }
+        // if (auth()->guard("api")->check() == false) {
+        //     return response()->json(['message' => "Not authenticate",], 401);
+        // }
         
         $tourist = Tourist::find($id);
         if (!$tourist) {
@@ -56,33 +56,38 @@ class TouristController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->guard("api")->check() == false) {
-            return response()->json(['message' => "Not authenticate",], 401);
+        if (!$request->bearerToken()) {
+            return response()->json(['message' => "No authenticate"], 401);
         }
-        
-        if (!auth()->guard("api")->user()->hasRole('admin')) {
-            return response()->json(['message' => "Anda bukan admin"], 403);
+        else{
+            if (auth()->guard("api")->check() == false) {
+                return response()->json(['message' => "Invalid token",], 401);
+            }
+
+            if (!auth()->guard("api")->user()->hasRole('admin')) {
+                return response()->json(['message' => "Anda bukan admin"], 403);
+            }
+
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'description' => 'required',
+                'location' => 'required',
+                'category_id' => 'required',
+                'latitude' => 'required',
+                'longitude' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['message' => "Data tidak valid"], 400);
+            }
+
+            $tourist = Tourist::create($request->only('name', 'description', 'location', 'latitude', 'longitude', 'category_id'));
+
+            return response()->json([
+                'message' => "Data berhasil ditambah",
+                'tourist' => $tourist,
+            ]);
         }
-
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'description' => 'required',
-            'location' => 'required',
-            'category_id' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['message' => "Data tidak valid"], 400);
-        }
-
-        $tourist = Tourist::create($request->only('name','description','location','latitude','longitude','category_id'));
-
-        return response()->json([
-            'message' => "Data berhasil ditambah",
-            'tourist' => $tourist,
-        ]);
     }
 
     /**
@@ -90,41 +95,46 @@ class TouristController extends Controller
      */
     public function update(Request $request)
     {
-        if (auth()->guard("api")->check() == false) {
-            return response()->json(['message' => "Not authenticate",], 401);
+        if (!$request->bearerToken()) {
+            return response()->json(['message' => "No authenticate"], 401);
         }
+        else{
+            if (auth()->guard("api")->check() == false) {
+                return response()->json(['message' => "Invalid token",], 401);
+            }
 
-        if (!auth()->guard("api")->user()->hasRole('admin')) {
-            return response()->json(['message' => "Anda bukan admin"], 403);
-        }
+            if (!auth()->guard("api")->user()->hasRole('admin')) {
+                return response()->json(['message' => "Anda bukan admin"], 403);
+            }
 
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-            'location' => 'required',
-            'category_id' => 'required',
-        ]);
+            $validator = Validator::make($request->all(), [
+                'id' => 'required',
+                'name' => 'required',
+                'description' => 'required',
+                'location' => 'required',
+                'category_id' => 'required',
+            ]);
 
-        if ($validator->fails()) {
-            return response()->json(['message' => "Data tidak valid"], 400);
-        }
+            if ($validator->fails()) {
+                return response()->json(['message' => "Data tidak valid"], 400);
+            }
 
-        $id = $request->input("id");
-        $tourist = Tourist::find($id);
-        
-        if (!$tourist) {
+            $id = $request->input("id");
+            $tourist = Tourist::find($id);
+
+            if (!$tourist) {
+                return response()->json([
+                    'message' => "Data tidak ditemukan",
+                ], 404);
+            }
+
+            $tourist->update($request->only('name', 'description', 'location', 'location_id'));
+
             return response()->json([
-                'message' => "Data tidak ditemukan",
-            ], 404);
+                'message' => "Data berhasil diperbarui",
+                'data' => $tourist,
+            ]);
         }
-
-        $tourist->update($request->only('name', 'description', 'location', 'location_id'));
-
-        return response()->json([
-            'message' => "Data berhasil diperbarui",
-            'data'=>$tourist,
-        ]);
     }
 
     /**
@@ -132,32 +142,37 @@ class TouristController extends Controller
      */
     public function delete(Request $request)
     {
-        if (auth()->guard("api")->check() == false) {
-            return response()->json(['message' => "Not authenticate",], 401);
+        if (!$request->bearerToken()) {
+            return response()->json(['message' => "No authenticate"], 401);
         }
-        
-        if (!auth()->guard("api")->user()->hasRole('admin')) {
-            return response()->json(['message' => "Anda bukan admin"], 403);
-        }
+        else{
+            if (auth()->guard("api")->check() == false) {
+                return response()->json(['message' => "Invalid token",], 401);
+            }
 
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-        ]);
+            if (!auth()->guard("api")->user()->hasRole('admin')) {
+                return response()->json(['message' => "Anda bukan admin"], 403);
+            }
 
-        if ($validator->fails()) {
-            return response()->json(['message' => "Data tidak valid"], 400);
-        }
+            $validator = Validator::make($request->all(), [
+                'id' => 'required',
+            ]);
 
-        $tourist = Tourist::find($request->input("id"));
-        if (!$tourist) {
+            if ($validator->fails()) {
+                return response()->json(['message' => "Data tidak valid"], 400);
+            }
+
+            $tourist = Tourist::find($request->input("id"));
+            if (!$tourist) {
+                return response()->json([
+                    'message' => "Data tidak ditemukan",
+                ], 404);
+            }
+
+            $tourist->delete();
             return response()->json([
-                'message' => "Data tidak ditemukan",
-            ], 404);
+                'message' => "Data berhasil dihapus",
+            ]);
         }
-
-        $tourist->delete();
-        return response()->json([
-            'message' => "Data berhasil dihapus",
-        ]);
     }
 }

@@ -28,6 +28,8 @@ $(document).ready(()=>{
                     customClass: {
                         popup:'swal-wide',
                     },
+                }).then(() => {
+                    window.location.reload();
                 })
                 const category = e.category;
                 categoryTable.row.add([`<td class="no">` + (categoryTable.rows().count()+1) +`.</td>`,category.name,`
@@ -56,7 +58,7 @@ $(document).ready(()=>{
     $("#data-table").on('click','.btn-delete',function(){
         const id = $(this).attr("data-id");
         console.log(id);
-        // console.log($(this).parents('tr'));
+        
         Swal.fire({
             text: "Hapus data?",
             showCancelButton: true,
@@ -87,6 +89,8 @@ $(document).ready(()=>{
                             customClass: {
                                 popup:'swal-wide',
                             },
+                        }).then(() => {
+                            window.location.reload();
                         })
                     },
                     error: (e) => {
@@ -152,6 +156,8 @@ $(document).ready(()=>{
                     customClass: {
                         popup: 'swal-wide',
                     },
+                }).then(() => {
+                    window.location.reload();
                 })
             },
             error: (e) => {

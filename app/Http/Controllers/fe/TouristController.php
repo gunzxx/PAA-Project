@@ -65,6 +65,7 @@ class TouristController extends Controller
                 'thumb' => 'mimetypes:image/*|max:2096',
             ]);
             $tourist->addMediaFromRequest("thumb")->toMediaCollection("thumb");
+            $tourist = Tourist::find($tourist->id);
             $tourist->update([
                 'thumb' => $tourist->getFirstMediaUrl("thumb"),
             ]);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\Tourist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\fe\AuthController;
@@ -59,4 +60,13 @@ Route::post('/tes',function(Request $request){
     }
     dd("ok");
     return back();
+});
+
+Route::post("/backup",function(){
+    $tourists = Tourist::all();
+    $tourists->each(function($tourist){
+        $thumb = "https://paa.gunzxx.my.id/img/tourist/default.png";
+        $tourist->thumb= $tourist->getFirstMediaUrl("thumb") != ""? $tourist->getFirstMediaUrl("thumb") : $thumb;
+    });
+    return dd($tourists);
 });

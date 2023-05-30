@@ -50,27 +50,32 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->guard("api")->check() == false) {
-            return response()->json(['message' => "Not authenticate",], 401);
+        if (!$request->bearerToken()) {
+            return response()->json(['message' => "No authenticate"], 401);
         }
-        
-        if(!auth()->guard("api")->user()->hasRole('admin')){
-            return response()->json(['message'=>"Anda bukan admin"],403);
+        else{
+            if (auth()->guard("api")->check() == false) {
+                return response()->json(['message' => "Invalid token",], 401);
+            }
+            
+            if(!auth()->guard("api")->user()->hasRole('admin')){
+                return response()->json(['message'=>"Anda bukan admin"],403);
+            }
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+            ]);
+    
+            if ($validator->fails()) {
+                return response()->json(['message' => "Data tidak valid"], 400);
+            }
+    
+            $category = Category::create($request->only('name'));
+            
+            return response()->json([
+                'message'=>"Data berhasil ditambah",
+                'category'=>$category,
+            ]);
         }
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['message' => "Data tidak valid"], 400);
-        }
-
-        $category = Category::create($request->only('name'));
-        
-        return response()->json([
-            'message'=>"Data berhasil ditambah",
-            'category'=>$category,
-        ]);
     }
 
     /**
@@ -78,29 +83,33 @@ class CategoryController extends Controller
      */
     public function update(Request $request)
     {
-        if (auth()->guard("api")->check() == false) {
-            return response()->json(['message' => "Not authenticate",], 401);
+        if (!$request->bearerToken()) {
+            return response()->json(['message' => "No authenticate"], 401);
+        } else {
+            if (auth()->guard("api")->check() == false) {
+                return response()->json(['message' => "Invalid token",], 401);
+            }
+            
+            if (!auth()->guard("api")->user()->hasRole('admin')) {
+                return response()->json(['message' => "Anda bukan admin"], 403);
+            }
+            $validator = Validator::make($request->all(), [
+                'id' => 'required',
+                'name' => 'required',
+            ]);
+    
+            if ($validator->fails()) {
+                return response()->json(['message' => "Data tidak valid"], 400);
+            }
+    
+            $id = $request->input("id");
+            $data = $request->only('name');
+            Category::find($id)->update($data);
+            
+            return response()->json([
+                'message'=>"Data berhasil diperbarui",
+            ]);
         }
-        
-        if (!auth()->guard("api")->user()->hasRole('admin')) {
-            return response()->json(['message' => "Anda bukan admin"], 403);
-        }
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-            'name' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['message' => "Data tidak valid"], 400);
-        }
-
-        $id = $request->input("id");
-        $data = $request->only('name');
-        Category::find($id)->update($data);
-        
-        return response()->json([
-            'message'=>"Data berhasil diperbarui",
-        ]);
     }
 
     /**
@@ -108,32 +117,36 @@ class CategoryController extends Controller
      */
     public function delete(Request $request)
     {
-        if (auth()->guard("api")->check() == false) {
-            return response()->json(['message' => "Not authenticate",], 401);
-        }
-        
-        if (!auth()->guard("api")->user()->hasRole('admin')) {
-            return response()->json(['message' => "Anda bukan admin"], 403);
-        }
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['message' => "Data tidak valid"], 400);
-        }
-
-        $id = $request->input("id");
-        $category = Category::find($id);
-        if(!$category){
+        if (!$request->bearerToken()) {
+            return response()->json(['message' => "No authenticate"], 401);
+        } else {
+            if (auth()->guard("api")->check() == false) {
+                return response()->json(['message' => "Invalid token",], 401);
+            }
+            
+            if (!auth()->guard("api")->user()->hasRole('admin')) {
+                return response()->json(['message' => "Anda bukan admin"], 403);
+            }
+            $validator = Validator::make($request->all(), [
+                'id' => 'required',
+            ]);
+    
+            if ($validator->fails()) {
+                return response()->json(['message' => "Data tidak valid"], 400);
+            }
+    
+            $id = $request->input("id");
+            $category = Category::find($id);
+            if(!$category){
+                return response()->json([
+                    'message'=>"Data tidak ditemukan",
+                ],404);
+            }
+    
+            $category->delete();
             return response()->json([
-                'message'=>"Data tidak ditemukan",
-            ],404);
+                'message'=>"Data berhasil dihapus",
+            ]);
         }
-
-        $category->delete();
-        return response()->json([
-            'message'=>"Data berhasil dihapus",
-        ]);
     }
 }
