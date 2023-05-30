@@ -61,15 +61,3 @@ Route::post('/tes',function(Request $request){
     dd("ok");
     return back();
 });
-
-Route::get("/backup",function(){
-    $tourists = Tourist::all();
-    $tourists->each(function($tourist){
-        $thumb = "https://paa.gunzxx.my.id/img/tourist/default.png";
-        $tourist->update([
-            'thumb'=> $tourist->getFirstMediaUrl("thumb") != "" ? $tourist->getFirstMediaUrl("thumb") : $thumb
-        ]);
-        $tourist = Tourist::find($tourist->id);
-    });
-    return dd($tourists);
-});
