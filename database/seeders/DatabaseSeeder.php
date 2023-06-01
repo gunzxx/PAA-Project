@@ -48,13 +48,13 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->assignRole('admin');
 
-        \App\Models\Category::create([
-            'name' => 'Destinasi',
-        ]);
+        // \App\Models\Category::create([
+        //     'name' => 'Destinasi',
+        // ]);
 
-        \App\Models\Category::create([
-            'name' => 'Kuliner',
-        ]);
+        // \App\Models\Category::create([
+        //     'name' => 'Kuliner',
+        // ]);
 
         // \App\Models\Tourist::create([
         //     'name' => 'Batu jubang',
