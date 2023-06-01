@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'gunzxx@mail.com',
             'password' => bcrypt('123'),
             'address' => "Jl Kalimantan 40",
+            'latitude'=> -8.263723377917053,
+            'longitude'=> 113.75732835223602,
         ]);
         $user->assignRole('admin');
 
@@ -29,6 +31,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'bayu@mail.com',
             'password' => bcrypt('123'),
             'address' => "Jl Kalimantan 41",
+            'latitude' => -8.263723377917053,
+            'longitude' => 113.75732835223602,
         ]);
         $user->assignRole('admin');
 
@@ -37,6 +41,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'farhan@mail.com',
             'password' => bcrypt('123'),
             'address' => "Jl Kalimantan 41",
+            'latitude' => -8.263723377917053,
+            'longitude' => 113.75732835223602,
         ]);
         $user->assignRole('admin');
 
@@ -45,6 +51,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'stefany@mail.com',
             'password' => bcrypt('123'),
             'address' => "Jl Kalimantan 41",
+            'latitude' => -8.263723377917053,
+            'longitude' => 113.75732835223602,
         ]);
         $user->assignRole('admin');
 
