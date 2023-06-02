@@ -16,7 +16,7 @@ class TouristController extends Controller
     {
         if($request->get("q")){
             $keyword = $request->get("q");
-            $tourists = Tourist::where('name','like',"%".$keyword."%")->with(['category','media'])->get();
+            $tourists = Tourist::where('name','like',"%".$keyword."%")->with(['category','media'])->orderBy('name')->get();
         }
         else{
             $tourists = Tourist::with(['category','media'])->get();
