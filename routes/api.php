@@ -32,3 +32,4 @@ Route::post('tourist/edit',[TouristController::class, 'update']);
 Route::delete('tourist',[TouristController::class,'delete']);
 
 // Review
+Route::get("/review",[ReviewController::class,'index']);
