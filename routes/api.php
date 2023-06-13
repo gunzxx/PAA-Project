@@ -28,5 +28,7 @@ Route::delete('category', [CategoryController::class, 'delete']);
 Route::get('tourist', [TouristController::class, 'index']);
 Route::get('tourist/{id}', [TouristController::class, 'single']);
 Route::post('tourist',[TouristController::class,'store']);
-Route::put('tourist',[TouristController::class, 'update']);
+Route::post('tourist/edit',[TouristController::class, 'update']);
 Route::delete('tourist',[TouristController::class,'delete']);
+
+// Review
