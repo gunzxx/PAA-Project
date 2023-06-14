@@ -52,7 +52,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="d-felx justify-content-center">
+            <div class="flex justify-center">
                 {{ $tourists->links() }}
             </div>
         </div>
