@@ -106,10 +106,10 @@ td{
 }
 ul.pagination{
     display: flex !important;
-    flex-direction: row;
+    flex-direction: row !important;
     justify-content: space-between;
     gap: 30px;
 }
 ul.pagination li{
-    display: inline;
+    display: inline !important;
 }
