@@ -51,9 +51,9 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-            <div class="container-pagination-me">
-                {{ $tourists->links() }}
+                <div class="mt-[30px] w-full">
+                    {{ $tourists->links() }}
+                </div>
             </div>
         </div>
     </main>

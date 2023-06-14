@@ -101,8 +101,6 @@ td{
 
 .container-pagination-me{
     width: 100% !important;
-    display: flex;
-    flex-direction: row !important;
 }
 ul.pagination{
     display: flex !important;
