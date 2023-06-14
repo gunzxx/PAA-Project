@@ -90,6 +90,12 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        if (!$request->bearerToken()) {
+            return response()->json([
+                'message ' => "Token required.",
+            ], 401);
+        }
+
         if (auth()->guard("api")->check() == false) {
             return response()->json(['message' => "Not authenticate",], 401);
         }
@@ -97,5 +103,18 @@ class AuthController extends Controller
         Auth::guard('api')->logout();
 
         return response()->json(['message'=>"Logout berhasil"]);
+    }
+
+    public function refresh(Request $request)
+    {
+        if (!$request->bearerToken()) {
+            return response()->json([
+                'message ' => "Token required.",
+            ], 401);
+        }
+        return response()->json([
+            'message' => 'Token refresh.',
+            'token' => Auth::guard('api')->refresh(),
+        ],400);
     }
 }

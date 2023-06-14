@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\be\AuthController;
+use App\Http\Controllers\be\ReviewController;
 use App\Http\Controllers\be\TouristController;
 use App\Http\Controllers\be\CategoryController;
 
@@ -15,6 +16,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Authentikasi
 Route::post('/auth/logout', [AuthController::class, 'logout']);
 Route::post('/auth/login', [AuthController::class, 'login']);
+Route::post('/auth/refresh', [AuthController::class, 'refresh']);
 Route::post('/auth/register', [AuthController::class, 'register']);
 
 // Kategori
@@ -32,4 +34,8 @@ Route::post('tourist/edit',[TouristController::class, 'update']);
 Route::delete('tourist',[TouristController::class,'delete']);
 
 // Review
-Route::get("/review",[ReviewController::class,'index']);
+Route::get("review",[ReviewController::class,'index']);
+Route::get("review/{id}",[ReviewController::class,'single']);
+Route::post("review",[ReviewController::class,'create']);
+Route::put("review",[ReviewController::class,'update']);
+Route::delete("review",[ReviewController::class,'delete']);

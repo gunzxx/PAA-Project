@@ -51,11 +51,11 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         if (!$request->bearerToken()) {
-            return response()->json(['message' => "No authenticate"], 401);
+            return response()->json(['message' => "Token required."], 401);
         }
         else{
             if (auth()->guard("api")->check() == false) {
-                return response()->json(['message' => "Invalid token",], 401);
+                return response()->json(['message' => "Token invalid",], 401);
             }
             
             if(!auth()->guard("api")->user()->hasRole('admin')){
@@ -84,10 +84,10 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         if (!$request->bearerToken()) {
-            return response()->json(['message' => "No authenticate"], 401);
+            return response()->json(['message' => "Token required."], 401);
         } else {
             if (auth()->guard("api")->check() == false) {
-                return response()->json(['message' => "Invalid token",], 401);
+                return response()->json(['message' => "Token invalid",], 401);
             }
             
             if (!auth()->guard("api")->user()->hasRole('admin')) {
@@ -118,10 +118,10 @@ class CategoryController extends Controller
     public function delete(Request $request)
     {
         if (!$request->bearerToken()) {
-            return response()->json(['message' => "No authenticate"], 401);
+            return response()->json(['message' => "Token required."], 401);
         } else {
             if (auth()->guard("api")->check() == false) {
-                return response()->json(['message' => "Invalid token",], 401);
+                return response()->json(['message' => "Token invalid",], 401);
             }
             
             if (!auth()->guard("api")->user()->hasRole('admin')) {
