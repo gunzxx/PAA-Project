@@ -50,10 +50,10 @@
                             </tr>
                         @endforeach
                     </tbody>
-                    <div class="">
-                        {{ $tourists->links() }}
-                    </div>
                 </table>
+                <div class="">
+                    {{ $tourists->links() }}
+                </div>
             </div>
         </div>
     </main>
