@@ -104,3 +104,9 @@ td{
     display: flex;
     flex-direction: row !important;
 }
+ul.pagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+}
