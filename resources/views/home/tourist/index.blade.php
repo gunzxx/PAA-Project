@@ -51,7 +51,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="">
+                <div class="container-pagination">
                     {{ $tourists->links() }}
                 </div>
             </div>

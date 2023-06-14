@@ -98,3 +98,7 @@ td{
     background: var(--w1);
 }
 /* Table configure end */
+
+.container-pagination{
+    width: 100% !important;
+}
