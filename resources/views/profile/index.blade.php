@@ -10,7 +10,7 @@
 
         <div class="content">
             <div class="nav-content">
-                <h1>Admin Site</h1>
+                <h1>Admin Panel</h1>
                 <p class="logout">Logout <i class="bi bi-box-arrow-right"></i></p>
             </div>
 
