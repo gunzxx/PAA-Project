@@ -53,7 +53,7 @@
                 </table>
             </div>
             <div class="container-pagination-me">
-                {{ $tourists->onEachSide(5)->links() }}
+                {{ $tourists->links() }}
             </div>
         </div>
     </main>
