@@ -99,6 +99,8 @@ td{
 }
 /* Table configure end */
 
-.container-pagination{
+.container-pagination-me{
     width: 100% !important;
+    display: flex;
+    height: min-content;
 }

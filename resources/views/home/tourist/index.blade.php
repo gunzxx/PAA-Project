@@ -52,7 +52,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="flex justify-center">
+            <div class="container-pagination-me">
                 {{ $tourists->links() }}
             </div>
         </div>
