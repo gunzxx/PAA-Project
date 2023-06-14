@@ -50,6 +50,7 @@
                             </tr>
                         @endforeach
                     </tbody>
+                    {{ $tourists->links() }}
                 </table>
             </div>
         </div>

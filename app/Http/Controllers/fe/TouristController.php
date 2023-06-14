@@ -11,7 +11,7 @@ class TouristController extends Controller
 {
     public function index()
     {
-        $tourists = Tourist::all();
+        $tourists = Tourist::paginate(10);
         return view('home.tourist.index',[
             'tourists'=>$tourists,
             'active'=>'tourist',
