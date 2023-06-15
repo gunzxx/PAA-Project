@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
+use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\TokenInvalidException;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\TokenBlacklistedException;
 
@@ -47,6 +48,11 @@ class ReviewController extends Controller
                     'token' => null,
                 ], 401);
             } catch(TokenInvalidException $e){
+                return response()->json([
+                    'message' => "Token tidak valid.",
+                    'token' => null,
+                ],401);
+            } catch(JWTException $e){
                 return response()->json([
                     'message' => "Token tidak valid.",
                     'token' => null,
