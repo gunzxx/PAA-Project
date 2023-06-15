@@ -33,15 +33,13 @@ class TouristController extends Controller
      */
     public function single($id)
     {
-        // if (auth()->guard("api")->check() == false) {
-        //     return response()->json(['message' => "Not authenticate",], 401);
-        // }
-        
         $tourist = Tourist::with([
-            'review' => function($q){
-                $q->with([
-                    'user' => function($q){
-                        $q->with(['media']);
+            'review' => function($r){
+                $r->with([
+                    'user' => function($u){
+                        $u->push([
+                            'media' => $u->getFirstMediaUrl('profile'),
+                        ]);
                     }
                 ])->orderBy('updated_at',"DESC");
             }
