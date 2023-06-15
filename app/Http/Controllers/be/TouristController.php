@@ -41,7 +41,7 @@ class TouristController extends Controller
             'review' => function($q){
                 $q->with([
                     'user' => function($q){
-                        $q->with('media');
+                        $q->with(['media']);
                     }
                 ])->orderBy('updated_at',"DESC");
             }
