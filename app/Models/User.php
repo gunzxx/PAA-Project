@@ -24,8 +24,6 @@ class User extends Authenticatable implements JWTSubject, HasMedia
         'remember_token',
     ];
 
-    public $with = ['media'];
-
     /**
      * The attributes that should be cast.
      *
