@@ -37,7 +37,7 @@ class TouristController extends Controller
         //     return response()->json(['message' => "Not authenticate",], 401);
         // }
         
-        $tourist = Tourist::find($id);
+        $tourist = Tourist::with(['review'])->find($id);
         if (!$tourist) {
             return response()->json([
                 'message' => "Data tidak ditemukan",

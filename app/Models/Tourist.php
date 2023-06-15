@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Review;
 use App\Models\Category;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
@@ -16,6 +17,10 @@ class Tourist extends Model implements HasMedia
 
     public function category(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function review(){
+        return $this->hasMany(Review::class);
     }
 
     public function registerMediaCollections(): void
