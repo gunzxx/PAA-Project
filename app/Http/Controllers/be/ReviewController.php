@@ -17,7 +17,7 @@ class ReviewController extends Controller
         $reviews = Review::all();
         return response()->json([
             'message' => "Data berhasil diambil.",
-            'data' => $reviews,
+            'data' => $reviews ?? [],
         ]);
     }
 
@@ -26,7 +26,7 @@ class ReviewController extends Controller
         $reviews = Review::find($id);
         return response()->json([
             'message' => "Data berhasil diambil.",
-            'data' => $reviews,
+            'data' => $reviews ?? [],
         ]);
     }
 
