@@ -39,7 +39,7 @@ class TouristController extends Controller
         
         $tourist = Tourist::with([
             'review' => function($q){
-                $q->orderBy('updated_at',"DESC");
+                $q->with(['user'])->orderBy('updated_at',"DESC");
             }
         ])->find($id);
         if (!$tourist) {
