@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Review;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Permission\Traits\HasRoles;
@@ -51,5 +52,10 @@ class User extends Authenticatable implements JWTSubject, HasMedia
         $this
             ->addMediaCollection('profile')
             ->singleFile();
+    }
+
+    public function review()
+    {
+        return $this->belongsTo(Review::class);
     }
 }
