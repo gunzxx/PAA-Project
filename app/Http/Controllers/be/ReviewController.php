@@ -113,6 +113,11 @@ class ReviewController extends Controller
                     'message' => "Token tidak valid.",
                     'token' => null,
                 ], 401);
+            } catch (JWTException $e) {
+                return response()->json([
+                    'message' => "Token tidak valid.",
+                    'token' => null,
+                ], 401);
             }
         }
 
@@ -163,6 +168,11 @@ class ReviewController extends Controller
                     'token' => null,
                 ], 401);
             } catch (TokenInvalidException $e) {
+                return response()->json([
+                    'message' => "Token tidak valid.",
+                    'token' => null,
+                ], 401);
+            } catch (JWTException $e) {
                 return response()->json([
                     'message' => "Token tidak valid.",
                     'token' => null,
