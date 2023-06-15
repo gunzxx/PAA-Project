@@ -37,11 +37,7 @@ class TouristController extends Controller
             'review' => function($r){
                 $r->with([
                     'user' => function($u){
-                        $u->with([
-                            'media' => function($media){
-                                $media->getUrl();
-                            }
-                        ]);
+                        $u->with(['media']);
                         // $u->push([
                         //     'media' => $u->getFirstMediaUrl('profile'),
                         // ]);
