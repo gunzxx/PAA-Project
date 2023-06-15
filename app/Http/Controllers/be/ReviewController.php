@@ -15,7 +15,7 @@ class ReviewController extends Controller
 {
     public function index()
     {
-        $reviews = Review::all();
+        $reviews = Review::orderBy("updated_at","DESC")->get();
         return response()->json([
             'message' => "Data berhasil diambil.",
             'data' => $reviews ?? [],
