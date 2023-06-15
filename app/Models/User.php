@@ -56,6 +56,6 @@ class User extends Authenticatable implements JWTSubject, HasMedia
 
     public function review()
     {
-        return $this->belongsTo(Review::class);
+        return $this->hasMany(Review::class);
     }
 }
