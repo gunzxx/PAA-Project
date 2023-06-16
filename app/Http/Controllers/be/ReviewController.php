@@ -125,7 +125,7 @@ class ReviewController extends Controller
             'id' => 'required',
             'text' => 'required',
             'tourist_id' => 'required',
-            'user_id' => 'required',
+            // 'user_id' => 'required',
         ]);
 
         if ($validate->fails()) {
