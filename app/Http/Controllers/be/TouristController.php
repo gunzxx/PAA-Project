@@ -38,9 +38,6 @@ class TouristController extends Controller
                 $r->with([
                     'user' => function($u){
                         $u->with(['media']);
-                        // $u->push([
-                        //     'media' => $u->getFirstMediaUrl('profile'),
-                        // ]);
                     }
                 ])->orderBy('updated_at',"DESC");
             }

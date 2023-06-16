@@ -62,7 +62,7 @@ class ReviewController extends Controller
 
         $validate = Validator::make($request->all(), [
             'text' => 'required',
-            'tourist_id' => 'required',
+            // 'tourist_id' => 'required',
         ]);
 
         if($validate->fails()){
