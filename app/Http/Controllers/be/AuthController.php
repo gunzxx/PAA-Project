@@ -35,10 +35,12 @@ class AuthController extends Controller
             ], 401);
         }
 
-        // $user = Auth::guard('api')->user();
+        $user = Auth::guard('api')->user();
+        $user['profile'] = $user->getMedia('profile')->First() ?? "";
         return response()->json([
             'message' => 'Login berhasil',
             'token' => $token,
+            'user' => $user,
         ]);
     }
 
