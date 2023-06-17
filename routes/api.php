@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\be\AuthController;
 use App\Http\Controllers\be\ReviewController;
+use App\Http\Controllers\be\UserController;
 use App\Http\Controllers\be\TouristController;
 use App\Http\Controllers\be\CategoryController;
 
@@ -39,3 +40,10 @@ Route::get("review/{id}",[ReviewController::class,'single']);
 Route::post("review",[ReviewController::class,'create']);
 Route::put("review",[ReviewController::class,'update']);
 Route::delete("review",[ReviewController::class,'delete']);
+
+// Profile
+// Route::get("user",[UserController::class,'index']);
+Route::get("user/{id}",[UserController::class,'single']);
+// Route::post("user",[UserController::class,'create']);
+Route::put("user",[UserController::class,'update']);
+// Route::delete("user",[UserController::class,'delete']);
