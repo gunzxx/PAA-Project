@@ -126,9 +126,9 @@ class UserController extends Controller
 
                 if ($validate2->fails()) {
                     if ($validate2->errors()->first() == "The profile field must not be greater than 4096 kilobytes."){
-                        return response()->json(['message' => $validate2->errors()->first()], 400);
+                        return response()->json(['message' => "Ukuran gambar terlalu besar."], 400);
                     }
-                    return response()->json(['message' => "Gambar tidak valid."], 400);
+                    return response()->json(['message' => $validate2->errors()->first()], 400);
                 }
                 $user->addMediaFromRequest("profile")->toMediaCollection("profile");
                 $user = User::find($user->id);
