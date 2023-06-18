@@ -102,6 +102,13 @@ class UserController extends Controller
             'name' => 'required',
             'address' => 'required',
         ]);
+        if ($request->file("profile")) {
+            $validate = Validator::make($request->all(), [
+                'name' => 'required',
+                'address' => 'required',
+                "profile" => "mimetypes:image/*|max:2048",
+            ]);
+        };
 
         if ($validate->fails()) {
             return response()->json(['message' => "Data tidak valid."], 400);
