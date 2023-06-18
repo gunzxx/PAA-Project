@@ -106,7 +106,7 @@ class UserController extends Controller
             $validate = Validator::make($request->all(), [
                 'name' => 'required',
                 'address' => 'required',
-                "profile" => "mimetypes:image/*|max:2048",
+                "profile" => "mimetypes:image/*|max:4096",
             ]);
         };
 
