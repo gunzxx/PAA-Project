@@ -45,5 +45,6 @@ Route::delete("review",[ReviewController::class,'delete']);
 // Route::get("user",[UserController::class,'index']);
 Route::get("user/{id}",[UserController::class,'single']);
 // Route::post("user",[UserController::class,'create']);
-Route::put("user",[UserController::class,'update']);
+Route::post("user",[UserController::class,'update']);
+Route::put("user/password",[UserController::class, 'changePassword']);
 // Route::delete("user",[UserController::class,'delete']);
