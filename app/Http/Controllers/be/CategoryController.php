@@ -74,7 +74,7 @@ class CategoryController extends Controller
             return response()->json([
                 'message'=>"Data berhasil ditambah",
                 'category'=>$category,
-            ]);
+            ],201);
         }
     }
 
