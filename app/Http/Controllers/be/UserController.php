@@ -102,13 +102,6 @@ class UserController extends Controller
             'name' => 'required',
             'address' => 'required',
         ]);
-        if ($request->file("profile")) {
-            $validate = Validator::make($request->all(), [
-                'name' => 'required',
-                'address' => 'required',
-                "profile" => "mimetypes:image/*|max:4096",
-            ]);
-        };
 
         if ($validate->fails()) {
             return response()->json(['message' => "Data tidak valid."], 400);
@@ -125,6 +118,18 @@ class UserController extends Controller
 
         try{
             if($request->file("profile")){
+                $validate2 = Validator::make($request->all(), [
+                    'name' => 'required',
+                    'address' => 'required',
+                    "profile" => "mimetypes:image/*|max:4096",
+                ]);
+
+                if ($validate2->fails()) {
+                    if ($validate2->errors()->first() == "The profile field must not be greater than 4096 kilobytes."){
+                        return response()->json(['message' => "Ukuran gambar terlalu besar."], 400);
+                    }
+                    return response()->json(['message' => "Gambar tidak valid."], 400);
+                }
                 $user->addMediaFromRequest("profile")->toMediaCollection("profile");
                 $user = User::find($user->id);
                 // return response()->json([
@@ -153,7 +158,7 @@ class UserController extends Controller
             ]);
         } catch(Exception $e){
             return response()->json([
-                'message' => "Data gagal diperbarui.",
+                'message' => $e->getMessage(),
             ],400);
         } catch(QueryException $e){
             return response()->json([
