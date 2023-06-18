@@ -117,6 +117,14 @@ class UserController extends Controller
         }
 
         try{
+            if($request->file("profile")){
+                $user->addMediaFromRequest("profile")->toMediaCollection("profile");
+                $user = User::find($user->id);
+                // return response()->json([
+                //     "profile" => $user->getFirstMediaUrl("profile"),
+                // ]);
+            }
+
             if($request->latitude && $request->longitude){
                 $user->update([
                     "name" => $request->name,
